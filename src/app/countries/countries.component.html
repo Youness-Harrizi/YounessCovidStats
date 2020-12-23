@@ -1,0 +1,127 @@
+<h1>Countries Page </h1>
+
+<div class="mx-auto">
+    <div class="form-group col-lg-5 mx-auto">
+        <label for="c">Select Country</label>
+        <select name="" class="form-control" id="c" #input (change)='updateValues(input.value)'>
+            <option value="{{con}}" *ngFor='let con of countries'>{{con}}</option>
+        </select>
+    </div>
+</div>
+
+
+<!--table -->
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Total cases</td>
+      <td>{{totalConfirmed}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>New cases</td>
+      <td>{{confirmed}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>active cases</td>
+      <td>{{active}}</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Total Recovered</td>
+      <td>{{totalRecovered}}</td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>New Recovered</td>
+      <td>{{recovered}}</td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>Recovery rate </td>
+      <td>{{recoveryRateGlobal}}</td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td>Total deaths  </td>
+      <td>{{totalDeaths}}</td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td>New deaths  </td>
+      <td>{{deaths}}</td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <td>Mortalityrate  </td>
+      <td>{{mortalityrateGlobal}}</td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+<!-- global data -->
+  <div>
+  <h2>Corona virus per country</h2>
+  <div style="display: block" name="piechart">
+    <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"></canvas>
+
+  </div>
+</div>
+
+
+
+<!-- bar =7days -->
+
+
+<div>
+  <h2>daily corona virus cases worldwide </h2>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+    </canvas>
+  </div>
+</div>
+
+
+<div class="news">
+  <h3>News for the country : {{country}}</h3>
+  <h3> enter news if u are allowed: </h3>
+  <input #box
+        (keyup.enter)="updateNewsPerCountry(box.value)">
+
+  <ul class="news-list">
+      <li *ngFor="let info of newsPerCountry">
+        {{ info }}
+      </li>
+    </ul>
+
+</div>

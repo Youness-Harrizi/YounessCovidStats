@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-6">
+    <h3>{{ user.displayName }}</h3>
+  </div>
+  <div class="col-sm-6 text-right">
+    <button class="btn btn-danger" (click)="expensesService.signOut()">
+      Sign Out
+    </button>
+  </div>
+
+  <div class="mx-auto" style="width: 200px">
+  <button type="button" class="btn btn-primary mr-4 mt-4" routerLink="/covid">View global covid page </button>
+  <button type="button" class="btn btn-primary mr-4 mt-4" routerLink="/countries">Check specific countries </button>
+
+</div>
+</div>
+
+
+<app-add-expenses></app-add-expenses>

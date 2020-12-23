@@ -1,0 +1,155 @@
+
+
+<div class="text-center">
+  <div class="header">
+
+    <img
+      style="width: 10%"
+      src="https://firebasestorage.googleapis.com/v0/b/expenses-67308.appspot.com/o/expenses.jpg?alt=media&token=595724b2-5124-4788-a6c9-4c0282c84f2c"
+      alt="Expenses image"
+    />
+    <h1>Covid 19 </h1>
+    <h2>Live updates and statistics </h2>
+
+    <ul>
+  <li>new Confirmed Globally:{{newConfirmedGlobal}}</li>
+  <li>new DeathsGlobally:{{newDeathsGlobal}}</li>
+  <li>total Recovered Globally:{{totalRecoveredGlobal}}</li>
+  <li>total confirmed Globally:{{totalconfirmedGlobal}}</li>
+</ul>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Total cases</td>
+      <td>{{totalconfirmedGlobal}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>New cases</td>
+      <td>{{newConfirmedGlobal}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>active cases</td>
+      <td>{{totalActiveGlobal}}</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Total Recovered</td>
+      <td>{{totalRecoveredGlobal}}</td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>New Recovered</td>
+      <td>{{newRecoveredGlobal}}</td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>Recovery rate </td>
+      <td>{{recoveryRateGlobal}}</td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td>Total deaths  </td>
+      <td>{{totalDeathsGlobal}}</td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td>New deaths  </td>
+      <td>{{newDeathsGlobal}}</td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <td>Mortality rate  </td>
+      <td>{{mortalityrateGlobal}}</td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+  </div>
+
+
+<!-- global data -->
+  <div>
+  <h2>Corona virus cases distribution worldwide</h2>
+  <div style="display: block" name="piechart">
+    <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"></canvas>
+
+  </div>
+</div>
+
+<!-- global 7 days -->
+<div>
+  <h2>daily corona virus cases worldwide </h2>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+    </canvas>
+  </div>
+</div>
+
+
+<!-- from 13 april line chart-->
+
+<div class="chart-line">
+
+<h2>Total global cases from 13 april 2020</h2>
+
+
+    <canvas baseChart
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType">
+    </canvas>
+</div>
+
+
+<div class="news">
+<h3>The news : </h3>
+
+<ul class="news-list">
+    <li *ngFor="let info of news">
+      {{ info }}
+    </li>
+  </ul>
+
+<h1> enter news if u are allowed </h1>
+<input #box
+      (keyup.enter)="updateNews(box.value)">
+
+
+
+
+</div>
+
+
+<div class="mx-auto" style="width: 100px;">
+
+<button type="button" class="btn btn-primary mt-4" routerLink="/countries">Check specific countries </button>
+
+</div>
+
+</div>
